@@ -47,26 +47,42 @@ authenticationRouter.get("/register", (request, response) => {
 });
 
 //Register Post Page
-authenticationRouter.post("/register", [check('password').isLength({ min: 5 })], (request, response) => {
+authenticationRouter.post("/register", [check('password').isLength({ min: 3 }),
+        check("username").isLength({min : 5}),
+        check("email").isEmail(),
+        check("fullName").isLength({min : 5}),
+        check("address").isLength({min : 5})
+    ], (request, response) => {
+
+    //Check the Errors Array
     const errors = validationResult(request);
-    if (!errors.isEmpty()) {
-        return response.status(422).json({ errors: errors.array() });
+    if (errors.isEmpty()) 
+    {
+        let newSpeaker = new speakers({
+            "fullName": request.body.fullName,
+            "username": request.body.username,
+            "password": request.body.password,
+            "email" : request.body.email,
+            "address.city": request.body.city,
+            "address.street": request.body.street,
+            "address.building": request.body.building,
+        });
+        newSpeaker.save().then((data) => {
+            response.redirect("/login");
+        }).catch((err) => {
+            console.log(err);
+        });
     }
-    let newSpeaker = new speakers({
-        "fullName": request.body.fullName,
-        "username": request.body.username,
-        "password": request.body.password,
-        "email" : request.body.email,
-        "address.city": request.body.city,
-        "address.street": request.body.street,
-        "address.building": request.body.building,
-    });
-    newSpeaker.save().then((data) => {
-        response.json(data)
-        response.redirect("/login");
-    }).catch((err) => {
-        console.log(err);
-    });
+    else
+    {
+        errors.array().forEach((err) =>{
+            var errorName = err.param;
+            console.log(errorName);
+            request.flash(errorName,errorName);
+        });
+        response.locals.message = request.flash();
+        response.render("Authentication/register");
+    }
 });
 
 //Logout Page & Destroy Session
