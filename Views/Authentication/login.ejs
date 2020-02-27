@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Login Page</title>
+    <link href="css/bootstrap.css" rel="stylesheet" />
+    <link href="css/font-awesome.css" rel="stylesheet"/>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        .row{
+            margin-top: 50px;
+        }
+        .form{
+            margin-left: 50px;
+        }
+        .mySlider{
+            margin-left: 50px;
+        }
+        img{
+            height: 600px;
+        }
+        .btn-danger{
+          margin-left: 45px;
+        }
+        .btn-primary{
+          margin-top: -50px;
+        }
+        h1{
+          text-align: center;
+          margin-top: 10px;
+          color: lightskyblue;
+        }
+    </style>
+    <script>
+        (function(){
+            $('.carousel').carousel({
+                interval: 1000
+            })
+        })
+    </script>
+</head>
+<body>
+    <h1>Events Management Project</h1>
+    <div class="row">
+        <div class="col-4 form">
+            <form action="/login" method="POST">
+                <div class="form-group row">
+                    <label for="inputEmail3" class="col-sm-2 col-form-label">Username</label>
+                    <div class="col-sm-10">
+                    <input type="username" class="form-control" id="inputEmail3" name="username">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="inputPassword3" class="col-sm-2 col-form-label">Password</label>
+                    <div class="col-sm-10">
+                    <input type="password" class="form-control" id="inputPassword3" name="password">
+                    </div>
+                </div>
+                <% if(locals.message){ %>
+                <div class="btn btn-danger"><%=message.failedLogin %></div>
+
+                <%} %>
+                <div class="form-group row">
+                    <div class="col-sm-10">
+                    <button type="submit" class="btn btn-primary">Sign in</button>
+                    <a href="/register" class="btn btn-primary">Sign up</a>
+                    </div>
+                </div>
+                </form>
+        </div>
+        <div class="col-7 mySlider">
+            <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
+                <ol class="carousel-indicators">
+                  <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
+                  <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
+                  <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
+                </ol>
+                <div class="carousel-inner">
+                  <div class="carousel-item active">
+                    <img src="Images/1.jpg" class="d-block w-100" alt="...">
+                    <div class="carousel-caption d-none d-md-block">
+                      <h5>First slide </h5>
+                      <p>Hello To Nodejs Events Management Project</p>
+                    </div>
+                  </div>
+                  <div class="carousel-item">
+                    <img src="Images/2.jpg" class="d-block w-100" alt="...">
+                    <div class="carousel-caption d-none d-md-block">
+                      <h5>Second slide </h5>
+                      <p>Hello To Nodejs Events Management Project</p>
+                    </div>
+                  </div>
+                  <div class="carousel-item">
+                    <img src="Images/3.jpg" class="d-block w-100" alt="...">
+                    <div class="carousel-caption d-none d-md-block">
+                      <h5>Third slide </h5>
+                      <p>Hello To Nodejs Events Management Project</p>
+                    </div>
+                  </div>
+                </div>
+                <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
+                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#carouselExampleCaptions" role="button" data-slide="next">
+                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  <span class="sr-only">Next</span>
+                </a>
+            </div>
+        </div>
+    </div>
+    <script src="js/JQuery-3.3.1.min.js"></script>
+    <script src="js/popper.js"></script>
+    <script src="js/bootstrap.js"></script>
+</body>
+</html>

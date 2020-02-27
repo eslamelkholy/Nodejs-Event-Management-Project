@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Speaker Profile</title>
+    <link href="/css/bootstrap.css" rel="stylesheet" />
+    <link href="/css/font-awesome.css" rel="stylesheet"/>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        .container{
+            margin-top: 50px;
+
+        }
+        h1{
+            color: lightseagreen;
+            margin-top: 50px;
+            margin-bottom: 20px;
+        }
+        .jumbotron{
+            height: 180px;
+            margin-top: -20px;
+        }
+        .blockquote-footer{
+            margin-top: 50px;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <%- include("./speakerNavbar.ejs") %>
+    <div class="container">
+        <h1>Welcome <%=speakerData.fullName%></h1><br>
+        <h4>Your Personal Information</h4>
+        <div class="row">
+            <form class="col-5" action="/speaker/updateSpeakerProfile" method="POST">
+                <div class="form-group">
+                    <label>Full Name</label>
+                    <input type="text" class="form-control" name="fullName" value="<%=speakerData.fullName%>" />
+                </div>
+                <div class="form-group">
+                    <label>UserName</label>
+                    <input type="text" class="form-control" name="username" value="<%=speakerData.username%>" />
+                </div>
+                    <div class="form-group">
+                        <label>UserPass</label>
+                        <input type="password" class="form-control" name="password" value="<%=speakerData.password%>" />
+                    </div>
+                    <div class="form-group">
+                    <label>Address City</label>
+                    <input type="text" class="form-control" name="city" value="<%=speakerData.address.city%>" />
+                </div>
+                <input type="submit" value="Update" class="btn btn-primary">
+            </form>
+            <div class="col-7">
+                <table class="table text-center bg-dark text-light table-rounded" style="border-radius: 5px;">
+                    <thead>
+                        <tr>
+                            <th>Event Title</th>
+                            <th>Event Date</th>
+                            <th>You Role</th>
+                            <th>Options</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                           <% currentEvent.forEach((event) =>{ %>
+                                <tr>
+                                    <td><%=event.title %></td>
+                                    <% if(event.date){ %>
+                                    <td><%=event.date.toDateString() %></td>
+                                    <% }else{ %>
+                                    <td>No Date Yet</td>
+                                    <% }%>    
+                                    <% if(speakerData._id == event.mainSpeaker){ %>
+                                        <td>Main Speaker</td>
+                                        <td><a class="btn btn-danger" href="#" onclick="cancelEvent(<%=speakerData._id%>,<%=event._id%>,true,this)">Cancel Event</a></td>
+                                    <% }else{ %>
+                                        <td>Other Speaker</td>
+                                        <td><a class="btn btn-danger" href="#" onclick="cancelEvent(<%=speakerData._id %>,<%=event._id%>,false,this)">Cancel Event</a></td>
+                                    <% } %>
+                                        
+                                </tr>
+                            <% }) %> 
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <p class="blockquote-footer" align="center">Copy Rights &copy; Reserved to Eslam Elkholy !</p>
+    </div>
+    
+    <script src="/js/JQuery-3.3.1.min.js"></script>
+    <script src="/js/popper.js"></script>
+    <script src="/js/bootstrap.js"></script>
+    <script src="/js/eventList.js"></script>
+</body>
+</html>

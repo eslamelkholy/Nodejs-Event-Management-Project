@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Events Page</title>
+    <link href="/css/bootstrap.css" rel="stylesheet" />
+    <link href="/css/font-awesome.css" rel="stylesheet"/>
+    <%- include("./../adminNavbar.ejs") %>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        li{
+            list-style: none;
+        }
+        .container{
+            margin-top: 50px;
+
+        }
+        table{
+            margin-top: 20px;
+        }
+        h1{
+            color: lightseagreen;
+        }
+        .crud{
+            margin-left: 10px;
+            width: 70px;
+        }
+    </style>
+</head>
+<body>
+      <div class="container">
+        <h1>Events List</h1>
+        <table class="table text-center bg-dark text-light">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Title</th>
+                    <th>Event Date</th>
+                    <th>Main Speaker</th>
+                    <th>Other Speakers</th>
+                    <td>
+                        Edit / Delete
+                    </td>
+                </tr>
+            </thead>
+            <tbody>
+                <% events.forEach((speaker) =>{ %>
+                    <tr>
+                        <td><%= speaker._id %></td>
+                        <td><%= speaker.title %></td>
+                        <% if(speaker.date){ %>
+                            <td><%= speaker.date.toDateString() %></td>
+                        <% }else{ %>
+                            <td>You Didn't Choose any Date yet</td>
+                        <% } %>
+                        <% if (speaker.mainSpeaker) { %>
+                            <td><%=speaker.mainSpeaker.fullName%></td>
+                        <% }else { %>
+                            <td>MainSpeaker Doesn't exist</td>
+                        <%} %>
+                        <td>
+                            <ul>
+                                <% if(speaker.otherSpeaker.length == 0){ %>
+                                    <li>OtherSpeaker Doesn't Exist</li>
+                                <% }else {%>
+                                    
+                                <%speaker.otherSpeaker.forEach((otherSpeaker1)=>{ %>
+                                    <% if (otherSpeaker1) { %>
+                                        <li><%=otherSpeaker1.fullName%></li>
+                                    <% }%>
+                                <% })} %>
+                            </ul>
+                        </td>
+                        <td>
+                            <a class="btn btn-primary crud" href="/event/update/<%=speaker._id%>">Edit</a>
+                            <a class="btn btn-danger crud" href="#" onclick="deleteEvent(<%=speaker._id%>,this)">Delete</a>
+                        </td>
+                    </tr>
+                <% }) %>
+            </tbody>
+        </table>
+      </div>
+    <script src="/js/JQuery-3.3.1.min.js"></script>
+    <script src="/js/popper.js"></script>
+    <script src="/js/bootstrap.js"></script>
+    <script src="/js/eventList.js"></script>
+</body>
+</html>

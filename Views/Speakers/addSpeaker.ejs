@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Responsive Page</title>
+    <link href="/css/bootstrap.css" rel="stylesheet" />
+    <link href="/css/font-awesome.css" rel="stylesheet"/>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        .container{
+            margin-top: 50px;
+        }
+        h1{
+            color: lightseagreen;
+            margin-bottom: 50px;
+        }
+        select{
+            margin-top: 10px;
+            margin-bottom: 20px;
+        }
+        .btn-primary{
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+      <%- include("./../adminNavbar.ejs") %>
+      <div class="container">
+        <h1 align="Center">add Speaker</h1>
+        <form class="col-6 offset-3" action="/speaker/add" method="POST" >
+            <!-- Readonly instead of disabled -->
+            <div class="form-group">
+                <label>Speaker Name</label>
+                <input type="text" class="form-control" name="fullName" />
+            </div>
+            <div class="form-group">
+                <label>Speaker Username</label>
+                <input type="text" class="form-control" name="username" />
+            </div>
+            <div class="form-group">
+                <label>Speaker password</label>
+                <input type="password" class="form-control" name="password" />
+            </div>
+            <div class="form-group">
+                <label>Speaker city</label>
+                <input type="text" class="form-control" name="city" />
+            </div>
+            <div class="form-group">
+                <label>Speaker street</label>
+                <input type="text" class="form-control" name="street" />
+            </div>
+            <div class="form-group">
+                <label>Speaker building</label>
+                <input type="text" class="form-control" name="building" />
+            </div>
+            <input type="submit" value="Add Speaker" class="btn btn-primary">
+         </form>
+      </div>
+    <script src="/js/JQuery-3.3.1.min.js"></script>
+    <script src="/js/popper.js"></script>
+    <script src="/js/bootstrap.js"></script>
+</body>
+</html>
