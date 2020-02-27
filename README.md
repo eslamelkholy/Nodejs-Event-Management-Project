@@ -10,6 +10,7 @@ Technology
 6-HTML
 7-CSS
 </pre>
+<pre>
 Project Requirements
 1-Login / Signup For (Speakers & Admins)
 2-MongoDB Schema Model
@@ -22,6 +23,7 @@ Project Requirements
 7-Speaker Can See All Available Events On The Website
 8-speaker can decline the event , and in this case Administrator should know to replace
 the speaker with another one
+</pre>
 <pre>
 Packages
 1-Auto Increment Package
