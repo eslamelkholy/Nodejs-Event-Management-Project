@@ -1,6 +1,6 @@
 # Nodejs-Event-Management-Project
-#This Project About Events Management in ITI Within Speakers Profiles And Admins Panel Using Nodejs , Mongoose ,EJS Views And Ajax Requests
-Technology
+# This Project About Events Management in ITI Within Speakers Profiles And Admins Panel Using Nodejs , Mongoose ,EJS Views And Ajax Requests
+-Technology
 <pre>
 1-Nodejs
 2-MongoDB
@@ -10,8 +10,8 @@ Technology
 6-HTML
 7-CSS
 </pre>
+-Project Requirements
 <pre>
-Project Requirements
 1-Login / Signup For (Speakers & Admins)
 2-MongoDB Schema Model
 3-Administration Functionality
@@ -24,16 +24,15 @@ Project Requirements
 8-speaker can decline the event , and in this case Administrator should know to replace
 the speaker with another one
 </pre>
+-Packages
 <pre>
-Packages
 1-Auto Increment Package
 2-momment Js For Event Date FORM IN HTML
 3-Express Session 
 4-Connect Flash For Validation
-
 </pre>
 
-Project Pictures
+-Project Pictures
 ![](public/Images/speakerProfile.png)
 ![](public/Images/listEvents.png)
 ![](public/Images/upcomingEvents.png)
