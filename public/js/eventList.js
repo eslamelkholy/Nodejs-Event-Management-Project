@@ -23,7 +23,6 @@ function cancelEvent(_speakerId,_eventId,_isMainSpeaker,obj)
         contentType:"application/json",
         data : JSON.stringify({speakerId : _speakerId, eventId: _eventId, isMainSpeaker : _isMainSpeaker}),
         success:function(data){
-            console.log(data);
             $(obj).parents("tr").remove();
         },
         error:function(error){
@@ -31,4 +30,9 @@ function cancelEvent(_speakerId,_eventId,_isMainSpeaker,obj)
         }
     });
 }
-
+function deleteOtherSpeaker(obj){
+    $("#otherSpeaker option").each(function(){
+        $(this).show();
+    });
+    $("#otherSpeaker").find("option[value='" + obj.value + "']").hide();
+}

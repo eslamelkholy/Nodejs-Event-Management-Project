@@ -75,10 +75,10 @@
                                     <% }%>    
                                     <% if(speakerData._id == event.mainSpeaker){ %>
                                         <td>Main Speaker</td>
-                                        <td><a class="btn btn-danger" href="#" onclick="cancelEvent(<%=speakerData._id%>,<%=event._id%>,true,this)">Cancel Event</a></td>
+                                        <td><a class="btn btn-danger" href="" onclick="cancelEvent(<%=speakerData._id%>,<%=event._id%>,true,this)">Cancel Event</a></td>
                                     <% }else{ %>
                                         <td>Other Speaker</td>
-                                        <td><a class="btn btn-danger" href="#" onclick="cancelEvent(<%=speakerData._id %>,<%=event._id%>,false,this)">Cancel Event</a></td>
+                                        <td><a class="btn btn-danger" href="" onclick="cancelEvent(<%=speakerData._id %>,<%=event._id%>,false,this)">Cancel Event</a></td>
                                     <% } %>
                                         
                                 </tr>

@@ -23,6 +23,15 @@
             height: 180px;
             margin-top: -20px;
         }
+        .noti{
+            text-align: center;
+        }
+        .notiTitle{
+            font-weight: bold;
+            margin: 5px;
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
     </style>
 </head>
 <body>
@@ -54,6 +63,12 @@
                 </div>
                 <input type="button" value="Update" class="btn btn-primary" disabled>
              </form>
+             <div class="alert alert-primary col-6 noti" role="alert">
+                <p class="notiTitle">Most Recent Notifications </p>
+                <% canceledEvents.forEach((event) =>{ %>
+                    <p style="color: brown;"><%= event.speakerId.fullName %> Has Canceled <%= event.eventId.title %> Event </p>
+              <% }) %>
+              </div>
       </div>
     <script src="/js/JQuery-3.3.1.min.js"></script>
     <script src="/js/popper.js"></script>

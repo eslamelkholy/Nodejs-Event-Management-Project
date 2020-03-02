@@ -32,10 +32,6 @@
         <h1 align="Center">Add Event</h1>
         <form class="col-6 offset-3" method="POST" action="/event/add">
             <div class="form-group">
-                <label>ID</label>
-                <input type="text" class="form-control" name="_id">
-            </div>
-            <div class="form-group">
                 <label>Event Name</label>
                 <input type="text" class="form-control" name="title" />
             </div>
@@ -44,7 +40,7 @@
                 <input type="date" class="form-control" name="date" />
             </div>
             Main Speaker
-            <select class="form-control" name="mainSpeaker">
+            <select class="form-control" id="mainSpeaker" onchange="deleteOtherSpeaker(this)" name="mainSpeaker">
             <% mySpeakers.forEach((speaker) =>{ %>
                     <% if(speaker){ %>
                         <option value="<%=speaker._id%>"><%= speaker.fullName %></option>
@@ -52,7 +48,7 @@
             <% }) %>
             </select>
             Other Speakers
-            <select class="form-control" multiple name="otherSpeaker">
+            <select class="form-control" multiple name="otherSpeaker" id="otherSpeaker">
             <% if(mySpeakers.length == 0){ %>
                 <option value="0">Sorry there isn't Other Speakers</option>
             <%}else{ %>
@@ -66,5 +62,6 @@
     <script src="/js/JQuery-3.3.1.min.js"></script>
     <script src="/js/popper.js"></script>
     <script src="/js/bootstrap.js"></script>
+    <script src="/js/eventList.js"></script>
 </body>
 </html>

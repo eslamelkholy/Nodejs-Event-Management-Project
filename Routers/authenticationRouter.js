@@ -16,11 +16,13 @@ authenticationRouter.get("/login", (request, response) => {
 //Post Login Validation
 authenticationRouter.post("/login", (request, response, next) => {
     if (request.body.username == "eslam" && request.body.password == "123") {
+        // request.session._id = 0;
         request.session.role = "admin";
         response.redirect("/admin/profile");
         next();
     }
-    else {
+    else 
+    {
         speakers.findOne(request.body).then((speaker) => {
             if (speaker) {
                 request.session._id = speaker._id;

@@ -5,11 +5,13 @@ var moment = require("moment");
 // Get the models to Connect DB
 let mongoose = require("mongoose");
 require("./../Models/eventModel");
+require("./../Models/notificationModel");
 let eventModel = mongoose.model("event");
 //Speaker Model
 require("./../Models/speakerModel");
 let speakerModel = mongoose.model("speaker");
 
+let notificationModel = mongoose.model("notification");
 eventRouter.use((request,response,next) =>{
     if(request.session.role == "admin")
     {
@@ -82,7 +84,7 @@ eventRouter.use((request,response,next) =>{
     {
         //Cancel Specified Event
         eventRouter.post("/cancel",(request,response) =>{
-            
+            console.log(request.body);
             if(request.body.isMainSpeaker)
             {
                 eventModel.updateOne({_id : request.body.eventId,mainSpeaker : request.body.speakerId} , { $unset : {"mainSpeaker" : ""}  
@@ -95,6 +97,7 @@ eventRouter.use((request,response,next) =>{
             }
             else
             {
+                console.log(request.body);
                 eventModel.updateOne({_id : request.body.eventId,otherSpeaker : request.body.speakerId} , { $pull : {"otherSpeaker" :request.body.speakerId }  
                 }).then((data) =>{
                     response.send(request.body.speakerId + "");
@@ -102,6 +105,13 @@ eventRouter.use((request,response,next) =>{
                     console.log(err);
                 });
             }
+            let myNotification = new notificationModel(request.body);
+            myNotification.save().then((data) =>{
+                console.log("speaker Deleted")
+            }).catch((err) =>{
+                console.log(err);
+            })
+            
             
         });
         next();

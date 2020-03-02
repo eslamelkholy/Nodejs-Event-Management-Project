@@ -50,11 +50,13 @@ server.use((request, response, next) => {
     else
         response.redirect("/login");
 });
-server.use("/speaker", speakerRouter);
 server.use("/admin", adminRouter);
+server.use("/speaker", speakerRouter);
 server.use("/event", eventRouter);
 
-
+server.use((request,response) =>{
+    response.send("404 NOT Found");
+});
 
 //MiddleWare Error
 //This will Work When access A Files that Doesn't Exists
