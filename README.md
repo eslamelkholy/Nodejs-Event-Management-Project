@@ -23,6 +23,7 @@
 7-Speaker Can See All Available Events On The Website
 8-speaker can decline the event , and in this case Administrator should know to replace
 the speaker with another one
+9-Delete Selected mainSpeaker from otherspeakers
 </pre>
 ### -Packages
 <pre>
@@ -33,6 +34,7 @@ the speaker with another one
 </pre>
 
 ### -Project Pictures
+![](public/Images/adminPanel.png)
 ![](public/Images/speakerProfile.png)
 ![](public/Images/listEvents.png)
 ![](public/Images/upcomingEvents.png)
